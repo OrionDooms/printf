@@ -49,7 +49,3 @@ int _printf(const char *format, ...)
 	va_end(args);
 	return (len);
 }
-int _putchar(char c)
-{
-	return (write(1, &c, 1));
-}
