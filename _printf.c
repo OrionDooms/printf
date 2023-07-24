@@ -21,16 +21,17 @@ int _printf(const char *format, ...)
 				case 's':
 					str = va_arg(args, char*);
 					{
-						for (j = 0; str[j] != '\0'; j++)
+						while (str[j] != '\0')
 						{
-							putchar(str[j]);
+							_putchar(str[j]);
+							j++;
 							len++;
 						}
 					}
 					break;
 				case 'c':
 					c = va_arg(args, int);
-						putchar(c);
+						_putchar(c);
 						break;
 				default:
 					break;
@@ -38,11 +39,15 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			putchar(format[i]);
+			_putchar(format[i]);
 			len++;
 		}
 		i++;
 	}
 	va_end(args);
 	return (len);
+}
+int _putchar(char c)
+{
+	return (write(1, &c, 1));
 }
