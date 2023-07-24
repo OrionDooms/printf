@@ -23,10 +23,9 @@ int _printf(const char *format, ...)
 				case 's':
 					str = va_arg(args, char*);
 					{
-						while (str[j] != '\0')
+						for (j = 0; str[j] != '\0'; j++)
 						{
 							putchar(str[j]);
-							j++;
 							len++;
 						}
 					}
@@ -36,6 +35,7 @@ int _printf(const char *format, ...)
 						putchar(c);
 						break;
 				default:
+					return (-1);
 					break;
 			}
 		}
