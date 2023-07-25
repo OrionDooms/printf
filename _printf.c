@@ -6,10 +6,10 @@
  */
 int _printf(const char *format, ...)
 {
-	unsigned int j, i = 0, len = 0;
-	char *str, c;
+	unsigned int i = 0, len = 0;
+	char c;
 	va_list args;
-	
+
 	if (format == NULL)
 		return (-1);
 	va_start(args, format);
@@ -21,31 +21,52 @@ int _printf(const char *format, ...)
 			switch (format[i])
 			{
 				case 's':
-					str = va_arg(args, char*);
-					{
-						for (j = 0; str[j] != '\0'; j++)
-						{
-							putchar(str[j]);
-							len++;
-						}
-					}
+				{
+					len = len + _puts(va_arg(args, char*));
 					break;
+				}
 				case 'c':
+				{
 					c = va_arg(args, int);
-						putchar(c);
-						break;
+					_putchar(c);
+					break;
+				}
 				default:
-					return (-1);
 					break;
 			}
 		}
 		else
 		{
-			putchar(format[i]);
+			_putchar(format[i]);
 			len++;
 		}
 		i++;
 	}
 	va_end(args);
 	return (len);
+}
+/**
+ * _puts - prints the string.
+ * @s: takes in a string.
+ * Return: length
+ */
+int _puts(char *s)
+{
+	int i;
+	int len = strlen(s);
+
+	for (i = 0; i < len; i++)
+	{
+		_putchar(s[i]);
+	}
+	return (len);
+}
+/**
+ * _putchar - write to stdout.
+ * @c: string to be print.
+ * Return: (string).
+ */
+int _putchar(char c)
+{
+	return (write(1, &c, 1));
 }
