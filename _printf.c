@@ -6,34 +6,32 @@
  */
 int _printf(const char *format, ...)
 {
-	unsigned int i = 0, len = 0;
+	int i, len = 0;
 	va_list args;
 
+	va_start(args, format);
 	if (format == NULL)
 		return (-1);
-	va_start(args, format);
-	while (format[i] != '\0')
+	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
 		{
 			i++;
-			switch (format[i])
+			if (format[i] == 's')
+				len += _puts(va_arg(args, char*));
+			else if (format[i] == 'c')
+				len +=  _putchar(va_arg(args, int));
+			else if (format[i] == '%')
+				len += _putchar(format[i]);
+			else
 			{
-				case 's':
-					 len = len + _puts(va_arg(args, char*));
-					break;
-				case 'c':
-					_putchar(va_arg(args, int));
-					break;
-				default:
-					return (-1);
+				len += _putchar(format[i]);
 			}
 		}
 		else
 		{
-			len = len + _putchar(format[i]);
+			len += _putchar(format[i]);
 		}
-		i++;
 	}
 	va_end(args);
 	return (len);
