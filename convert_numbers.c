@@ -1,5 +1,15 @@
 #include "main.h"
 /**
+ * print_int - prints integers.
+ * @n: takes in integers.
+ * Return: length.
+ */
+int binary_int(int n)
+{
+	binary_num(n);
+	return (count_num(n));
+}
+/**
  * binary_num - convert decimal number into binary numbers.
  * @n: takes in a integer.
  */

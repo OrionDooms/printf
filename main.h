@@ -8,5 +8,10 @@
 int _putchar(char c);
 int _printf(const char *format, ...);
 int _puts(char *s);
+int print_int(int n);
+void print_num(int n);
+int count_num(int n);
+void binary_num(int n);
+int binary_int(int n);
 
 #endif

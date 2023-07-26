@@ -28,7 +28,7 @@ int _printf(const char *format, ...)
 			else if (format[i] == 'i')
 				len += print_int(va_arg(args, int));
 			else if (format[i] == 'b')
-                               	binary_num(va_arg(args, int));
+				len += binary_int(va_arg(args, int));
 			else
 			{
 				len += _putchar('%');
