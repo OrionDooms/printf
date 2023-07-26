@@ -23,6 +23,12 @@ int _printf(const char *format, ...)
 				len +=  _putchar(va_arg(args, int));
 			else if (format[i] == '%')
 				len += _putchar(format[i]);
+			else if (format[i] == 'd')
+				len += print_int(va_arg(args, int));
+			else if (format[i] == 'i')
+				len += print_int(va_arg(args, int));
+			else if (format[i] == 'b')
+                               	binary_num(va_arg(args, int));
 			else
 			{
 				len += _putchar('%');
