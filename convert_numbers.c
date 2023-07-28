@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * print_int - prints integers.
+ * binary_int - prints integers.
  * @n: takes in integers.
  * Return: length.
  */
